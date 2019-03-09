@@ -14,7 +14,7 @@ class Question {
 
         if ($stmt->rowCount() > 0) {
             $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return (json_encode($questions));
+            return json_encode($questions, JSON_PRETTY_PRINT);
         }
         return false;
     }
