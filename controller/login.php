@@ -16,9 +16,9 @@ class Login {
         if ($user) {
             $this->user = $user;
             session_start();
-            $_SESSION['name'] = $user['name'];
+            $_SESSION['student_name'] = $user['student_name'];
             $_SESSION['student_id'] = $user['student_id'];
-            return $user['name'];
+            return $user['student_name'];
         }
         return false;
     }
