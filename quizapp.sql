@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2019 at 11:44 AM
+-- Generation Time: Mar 09, 2019 at 01:56 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -59,6 +59,25 @@ CREATE TABLE `student_answer` (
   `answer` varchar(1) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data for table `student_answer`
+--
+
+INSERT INTO `student_answer` (`student_id`, `question_id`, `answer`) VALUES
+('111111111', '1', 'a');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test_history`
+--
+
+CREATE TABLE `test_history` (
+  `date` date NOT NULL,
+  `topic` text COLLATE utf8_bin,
+  `attended` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 -- --------------------------------------------------------
 
 --
@@ -67,9 +86,17 @@ CREATE TABLE `student_answer` (
 
 CREATE TABLE `user` (
   `student_id` varchar(11) COLLATE utf8_bin NOT NULL,
-  `name` text COLLATE utf8_bin NOT NULL,
+  `student_name` text COLLATE utf8_bin NOT NULL,
   `pass` varchar(11) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`student_id`, `student_name`, `pass`) VALUES
+('111111111', 'Hulu', 'xyzabc'),
+('123456789', 'Bejo', 'abcdef');
 
 -- --------------------------------------------------------
 
@@ -93,6 +120,13 @@ ALTER TABLE `question_bank`
   ADD PRIMARY KEY (`question_id`);
 
 --
+-- Indexes for table `student_answer`
+--
+ALTER TABLE `student_answer`
+  ADD KEY `Question ID` (`question_id`),
+  ADD KEY `Student ID` (`student_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -103,6 +137,17 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user_score`
   ADD PRIMARY KEY (`student_id`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `student_answer`
+--
+ALTER TABLE `student_answer`
+  ADD CONSTRAINT `Question ID` FOREIGN KEY (`question_id`) REFERENCES `question_bank` (`question_id`),
+  ADD CONSTRAINT `Student ID` FOREIGN KEY (`student_id`) REFERENCES `user` (`student_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
