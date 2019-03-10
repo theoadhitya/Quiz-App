@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2019 at 01:56 PM
+-- Generation Time: Mar 10, 2019 at 12:50 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `question_bank` (
+  `topic` text COLLATE utf8_bin NOT NULL,
   `question_id` varchar(3) COLLATE utf8_bin NOT NULL,
   `question` mediumtext COLLATE utf8_bin NOT NULL,
   `option_A` text COLLATE utf8_bin NOT NULL,
@@ -43,9 +44,9 @@ CREATE TABLE `question_bank` (
 -- Dumping data for table `question_bank`
 --
 
-INSERT INTO `question_bank` (`question_id`, `question`, `option_A`, `option_B`, `option_C`, `option_D`, `option_E`, `answer`) VALUES
-('1', 'Tes123', 'aaaa', 'bbbb', 'cccc', 'dddd', 'eeee', 'a'),
-('2', 'soalke2', 'aa', 'bb', 'cc', 'dd', 'ee', 'a');
+INSERT INTO `question_bank` (`topic`, `question_id`, `question`, `option_A`, `option_B`, `option_C`, `option_D`, `option_E`, `answer`) VALUES
+('x', '1', 'Tes123', 'aaaa', 'bbbb', 'cccc', 'dddd', 'eeee', 'a'),
+('x', '2', 'soalke2', 'aa', 'bb', 'cc', 'dd', 'ee', 'a');
 
 -- --------------------------------------------------------
 
@@ -54,6 +55,7 @@ INSERT INTO `question_bank` (`question_id`, `question`, `option_A`, `option_B`, 
 --
 
 CREATE TABLE `student_answer` (
+  `test_id` varchar(3) COLLATE utf8_bin NOT NULL,
   `student_id` varchar(11) COLLATE utf8_bin NOT NULL,
   `question_id` varchar(3) COLLATE utf8_bin NOT NULL,
   `answer` varchar(1) COLLATE utf8_bin NOT NULL
@@ -63,8 +65,9 @@ CREATE TABLE `student_answer` (
 -- Dumping data for table `student_answer`
 --
 
-INSERT INTO `student_answer` (`student_id`, `question_id`, `answer`) VALUES
-('111111111', '1', 'a');
+INSERT INTO `student_answer` (`test_id`, `student_id`, `question_id`, `answer`) VALUES
+('1', '111111111', '1', 'a'),
+('1', '111111111', '1', 'a');
 
 -- --------------------------------------------------------
 
@@ -74,7 +77,7 @@ INSERT INTO `student_answer` (`student_id`, `question_id`, `answer`) VALUES
 
 CREATE TABLE `test_history` (
   `date` date NOT NULL,
-  `topic` text COLLATE utf8_bin,
+  `test_id` text COLLATE utf8_bin NOT NULL,
   `attended` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -105,49 +108,29 @@ INSERT INTO `user` (`student_id`, `student_name`, `pass`) VALUES
 --
 
 CREATE TABLE `user_score` (
+  `test_id` varchar(3) COLLATE utf8_bin NOT NULL,
   `student_id` varchar(11) COLLATE utf8_bin NOT NULL,
-  `score` int(3) NOT NULL
+  `total_question` int(3) NOT NULL,
+  `correct_answer` int(3) NOT NULL,
+  `score` float(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `user_score`
+--
+
+INSERT INTO `user_score` (`test_id`, `student_id`, `total_question`, `correct_answer`, `score`) VALUES
+('1', '111111111', 50, 37, 74.00);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `question_bank`
---
-ALTER TABLE `question_bank`
-  ADD PRIMARY KEY (`question_id`);
-
---
--- Indexes for table `student_answer`
---
-ALTER TABLE `student_answer`
-  ADD KEY `Question ID` (`question_id`),
-  ADD KEY `Student ID` (`student_id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`student_id`);
-
---
--- Indexes for table `user_score`
---
-ALTER TABLE `user_score`
-  ADD PRIMARY KEY (`student_id`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `student_answer`
---
-ALTER TABLE `student_answer`
-  ADD CONSTRAINT `Question ID` FOREIGN KEY (`question_id`) REFERENCES `question_bank` (`question_id`),
-  ADD CONSTRAINT `Student ID` FOREIGN KEY (`student_id`) REFERENCES `user` (`student_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
