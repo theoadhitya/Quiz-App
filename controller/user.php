@@ -29,18 +29,18 @@ class User {
         }
     }
 
-    // function getAllUsers() {
-    //     $query = 'SELECT * FROM ' . $this->table_name;
-    //     $stmt = $this->conn->prepare($query);
-    //     $stmt->execute();
+    function getAllUsers() {
+        $query = 'SELECT * FROM ' . $this->table_name;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
 
-    //     if ($stmt->rowCount() > 0) {
-    //         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //         return $users;
-    //     }
+        if ($stmt->rowCount() > 0) {
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $users;
+        }
 
-    //     return false;
-    // }
+        return false;
+    }
 
     function setStudentId($student_id) {       
         $this->student_id = $student_id;
