@@ -15,6 +15,6 @@ function loadQ() {
       document.getElementById("root").innerHTML = response[0].question;
     }
   }
-  req.open("GET", "data/08-03-2019.json", true);
+  req.open("GET", "data/question_data.php", true);
   req.send();
 }
