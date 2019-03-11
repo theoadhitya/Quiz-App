@@ -21,7 +21,7 @@ function loadQ() {
 
 function contentList(response){
   var output = "<h1></h1>";
-  for (let i=0; i<response.length;i++){
+  for (let i = 0; i < response.length; i++){
     output += "<li>";
     output += "<h3>" + response[i].question + "</h3>";
     output += "<input type='radio' name= '" + response[i].question_id +"' value='option_A'>" + response[i].option_A + "<br>";
@@ -32,7 +32,8 @@ function contentList(response){
     output += "</li>";
   }
   output += "<br>" + "<input type='button' value='Submit Answers'>";
-    document.getElementById("quiz-content").innerHTML = output;
+  
+  document.getElementById("quiz-content").innerHTML = output;
 }
 
 function checkAnswers(){
