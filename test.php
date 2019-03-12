@@ -26,6 +26,18 @@ include "controller/config.php";
 
 // echo "<br>";
 
+/************************
+ *   Testing Add Users  *
+ ***********************/
+// include "controller/user.php";
+// $temp_student_id = 444444;
+// $temp_student_name = "Budi";
+// $temp_password = "12budi34";
+// $user = new User($conn);
+// echo ($user->insert($temp_student_id, $temp_student_name, $temp_password));
+
+// echo "<br>";
+
 /****************************
 *   Testing Posting Answer  *
 ****************************/
@@ -55,18 +67,26 @@ include "controller/config.php";
 *   Testing Inserting Question  *
 ********************************/
 // function insertQuestion($topic, $question_id, $question, $option_A, $option_B, $option_C, $option_D, $option_E, $answer)
-include "controller/question.php";
-$temp_topic = "Politic History";
-$temp_question_id = 4;
-$temp_question = "The first President of Indonesia";
-$temp_option_A = "Asep";
-$temp_option_B = "Bambang";
-$temp_option_C = "Tatang";
-$temp_option_D = "Kevin";
-$temp_option_E = "Udin";
-$temp_answer = "a";
-$question = new Question($conn);
-$insert = $question->insertQuestion($temp_topic, $temp_question_id, $temp_question, 
-    $temp_option_A, $temp_option_B, $temp_option_C, $temp_option_D, $temp_option_E, $temp_answer);
-echo $insert;
+// include "controller/question.php";
+// $temp_topic = "Politic History";
+// $temp_question_id = 4;
+// $temp_question = "The first President of Indonesia";
+// $temp_option_A = "Asep";
+// $temp_option_B = "Bambang";
+// $temp_option_C = "Tatang";
+// $temp_option_D = "Kevin";
+// $temp_option_E = "Udin";
+// $temp_answer = "a";
+// $question = new Question($conn);
+// $insert = $question->insertQuestion($temp_topic, $temp_question_id, $temp_question, 
+//     $temp_option_A, $temp_option_B, $temp_option_C, $temp_option_D, $temp_option_E, $temp_answer);
+// echo $insert;
+
+/**********************************
+*   Testing Export Data to Excel  *
+**********************************/
+include "controller/data_export.php";
+// - close ?php tag 
+// <p><a href = "controller/export.php"><button>Export Test</button></a></p>
+
 ?>
