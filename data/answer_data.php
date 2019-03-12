@@ -14,5 +14,4 @@ if ($post_answer->insert()) {
 } else {
     echo "Some Problems Occured";
 }
-
 ?>
