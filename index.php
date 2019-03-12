@@ -9,8 +9,10 @@
 
   <body>
     <div id="root">
+      <p id="test"></p>
       <ol id="quiz-content"></ol>
     </div>
     <script src="js/abc.js" type="text/javascript"></script>
+    <script src="js/data_request.js" type="text/javascript"></script>
   </body>
 </html>
