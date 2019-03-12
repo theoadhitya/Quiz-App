@@ -7,22 +7,19 @@ class User {
     private $student_name;
     private $password;
 
-    public function __construct($conn, $student_id, $student_name, $password) {
+    public function __construct($conn) {
         $this->conn = $conn;
-        $this->setStudentId($student_id);
-        $this->setStudentName($student_name);
-        $this->setPassword($password);
     }
     
-    function insert() {
+    function insert($student_id, $student_name, $password) {
         $query = 'INSERT INTO ' . $this->table_name
             . ' VALUES(:student_id, :student_name, :password)';
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':student_id', $this->getStudentId());
-        $stmt->bindParam(':student_name', $this->getStudentName());
-        $stmt->bindParam(':password', $this->getPassword());
+        $stmt->bindParam(':student_id', $student_id);
+        $stmt->bindParam(':student_name', $student_name);
+        $stmt->bindParam(':password', $password);
 
-        if ($stmt->exeute()) {
+        if ($stmt->execute()) {
             return true;
         } else {
             return false;
@@ -40,30 +37,6 @@ class User {
         }
 
         return false;
-    }
-
-    function setStudentId($student_id) {       
-        $this->student_id = $student_id;
-    }
-
-    function getStudentId() {
-        return $this->student_id;
-    }
-
-    function setStudentName($student_name) {
-        $this->student_name = $student_name;
-    }
-
-    function getStudentName() {
-        return $this->student_name;
-    }
-
-    function setPassword($password) {
-        $this->password = $password;
-    }
-
-    function getPassword() {
-        return $this->password;
     }
 }
 ?>
