@@ -11,6 +11,7 @@
     <div id="root">
       <p id="test"></p>
       <ol id="quiz-content"></ol>
+      <button id ="submit-answer" class="button" onclick="countScore()">Submit Answer</button>
     </div>
     <script src="js/abc.js" type="text/javascript"></script>
     <script src="js/data_request.js" type="text/javascript"></script>
