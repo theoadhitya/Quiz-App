@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2019 at 12:50 PM
+-- Generation Time: Mar 13, 2019 at 11:02 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -46,7 +46,8 @@ CREATE TABLE `question_bank` (
 
 INSERT INTO `question_bank` (`topic`, `question_id`, `question`, `option_A`, `option_B`, `option_C`, `option_D`, `option_E`, `answer`) VALUES
 ('x', '1', 'Tes123', 'aaaa', 'bbbb', 'cccc', 'dddd', 'eeee', 'a'),
-('x', '2', 'soalke2', 'aa', 'bb', 'cc', 'dd', 'ee', 'a');
+('x', '2', 'soalke2', 'aa', 'bb', 'cc', 'dd', 'ee', 'a'),
+('Politic History', '4', 'The first President of Indonesia', 'Asep', 'Bambang', 'Tatang', 'Kevin', 'Udin', 'a');
 
 -- --------------------------------------------------------
 
@@ -99,7 +100,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`student_id`, `student_name`, `pass`) VALUES
 ('111111111', 'Hulu', 'xyzabc'),
-('123456789', 'Bejo', 'abcdef');
+('123456789', 'Bejo', 'abcdef'),
+('444444', 'Budi', '12budi34');
 
 -- --------------------------------------------------------
 
@@ -120,7 +122,16 @@ CREATE TABLE `user_score` (
 --
 
 INSERT INTO `user_score` (`test_id`, `student_id`, `total_question`, `correct_answer`, `score`) VALUES
-('1', '111111111', 50, 37, 74.00);
+('2', '333333', 50, 39, 78.00),
+('2', '333333', 50, 39, 78.00),
+('2', '333333', 50, 39, 78.00),
+('2', '333333', 50, 39, 78.00),
+('2', '333333', 50, 39, 78.00),
+('2', '333333', 50, 39, 78.00),
+('2', '333333', 50, 39, 78.00),
+('2', '333333', 50, 39, 78.00),
+('2', '333333', 50, 39, 78.00),
+('2', '333333', 50, 39, 78.00);
 
 --
 -- Indexes for dumped tables
